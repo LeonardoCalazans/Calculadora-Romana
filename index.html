@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./css/index.css" />
+    <title>Calculadora</title>
+</head>
+
+<body class="fundo">
+    <div>
+        <div class="calc">
+            <div class="x">
+                <div>
+                    <h1>Calculadora</h1>
+                    <p id="result"></p>
+                    <table>
+                        <tr>
+                            <td><button class="button" onclick="clean()">C</button></td>
+                            <td><button class="button" onclick="back()"> B </button>
+                            </td>
+                            <td><button class="button" onclick="insert('/')">/</button></td>
+                            <td><button class="button" onclick="insert('*')">X</button></td>
+                        </tr>
+                        <tr>
+                            <td><button class="button" onclick="insert('7')">7</button></td>
+                            <td><button class="button" onclick="insert('8')">8</button></td>
+                            <td><button class="button" onclick="insert('9')">9</button></td>
+                            <td><button class="button" onclick="insert('-')">-</button></td>
+                        </tr>
+                        <tr>
+                            <td><button class="button" onclick="insert('4')">4</button></td>
+                            <td><button class="button" onclick="insert('5')">5</button></td>
+                            <td><button class="button" onclick="insert('6')">6</button></td>
+                            <td><button class="button" onclick="insert('+')">+</button></td>
+                        </tr>
+                        <tr>
+                            <td><button class="button" onclick="insert('1')">1</button></td>
+                            <td><button class="button" onclick="insert('2')">2</button></td>
+                            <td><button class="button" onclick="insert('3')">3</button></td>
+                            <td rowspan="2"><button class="button equal" onclick="calcular()">=</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><button class="button zero" onclick="insert('0')">0</button>
+                            </td>
+                            <td><button class="button" onclick="insert('.')">.</button></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="bar">
+                </div>
+                <div>
+                    <p>results em romanos</p>
+                    <ul class="listaDeCalculos" id="listaDeCalculosDecimais">
+                        <li>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bar">
+                </div>
+                <div>
+                    <p>results em decimais</p>
+                    <ul class="listaDeCalculos" id="listaDeCalculosRomanos">
+                        <li>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <ul>
+            <li>Leonardo Pinto Silva Calazan - Matricula: 2020101772</li>
+            <li>----------------------------------------------------</li>
+            <li>----------------------------------------------------</li>
+            <li>----------------------------------------------------</li>
+        </ul>
+    </footer>
+    <script>
+        function insert(num) {
+            var value = document.getElementById('result').innerHTML;
+            console.log(value)
+            document.getElementById('result').innerHTML = value + num;
+        }
+        function clean() {
+            document.getElementById('result').innerHTML = "";
+        }
+        function back() {
+            var result = document.getElementById('result').innerHTML;
+            document.getElementById('result').innerHTML = result.substring(0, result.length - 1);
+        }
+        function calcular() {
+            var resultValue = document.getElementById('result').innerHTML;
+            console.log(resultValue)
+            if (resultValue) {
+                const result = document.getElementById('result').innerHTML = eval(resultValue);
+                const list = document.getElementById('listaDeCalculosDecimais')
+                list.innerHTML = `<li> ${resultValue} = ${result} <li>` + list.innerHTML;
+                console.log(list)
+                return result
+            }
+            else {
+                document.getElementById('result').innerHTML = "Nada..."
+            }
+        }
+    </script>
+</body>
+
+</html>
