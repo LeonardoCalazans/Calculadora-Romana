@@ -4,16 +4,21 @@
   font-size: 2rem;
   cursor: pointer;
   margin: 0.2rem;
-  /* background-color: rgb(31, 31, 31); */
   border: none;
   border-radius: 1rem;
   color: black;
   transition: 0.3s;
 }
 .equal {
-  height: 10.5rem;
+  width: 130%;
 }
-.zero {
+.back {
+  width: 10.5rem;
+}
+.unos{
+  width: 98%;
+}
+.clean {
   width: 10.5rem;
 }
 
@@ -26,7 +31,6 @@
 #result {
   display: flex;
   background-color: white;
-  /* width: 100; */
   justify-content: end;
   align-items: center;
   height: 3rem;
