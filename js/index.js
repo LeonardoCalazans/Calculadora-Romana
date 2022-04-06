@@ -24,13 +24,13 @@ function calculate() {
     const romanNumeral = displayValue.slice(0, operatorIndex).join('');
     const romanNumeral2 = displayValue.slice(operatorIndex + 1, displayValue.length).join('');
 
-    const arabicNumbers = convertToArabicNumber(romanNumeral);
-    const arabicNumbers2 = convertToArabicNumber(romanNumeral2);
+    const arabicNumber = convertToArabicNumber(romanNumeral);
+    const arabicNumber2 = convertToArabicNumber(romanNumeral2);
 
-    const arabicResult = eval(arabicNumbers + operator + arabicNumbers2);
+    const arabicResult = eval(arabicNumber + operator + arabicNumber2);
     const romanResult = convertToRoman(arabicResult);
 
-    const arabicDisplay = `${arabicNumbers} ${operator} ${arabicNumbers2} = ${arabicResult}`;
+    const arabicDisplay = `${arabicNumber} ${operator} ${arabicNumber2} = ${arabicResult}`;
     const romanDisplay = `${romanNumeral} ${operator} ${romanNumeral2} = ${romanResult}`;
 
     const showDecimalResultList = document.getElementById('listaDeCalculosDecimais');
