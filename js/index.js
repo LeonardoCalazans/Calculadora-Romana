@@ -1,20 +1,3 @@
-const numeroseNumerais = [
-    {numero: 1000, romano: 'M'}, //0
-    {numero: 900, romano: 'CM'}, //1
-    {numero: 500, romano: 'D'},  //2
-    {numero: 400, romano: 'CD'}, //3
-    {numero: 100, romano: 'C'},  //4
-    {numero: 90, romano: 'XC'},  //5
-    {numero: 50, romano: 'L'},   //6
-    {numero: 40, romano: 'XL'},  //7
-    {numero: 10, romano: 'X'},   //8
-    {numero: 9, romano: 'IX'},   //9
-    {numero: 5, romano: 'V'},    //10
-    {numero: 4, romano: 'IV'},   //11
-    {numero: 1, romano: 'I'}     //12
-];
-const operators = ['+', '-', '*', '/'];
-const displayValue = [];
 
 function insert(algarism) {
     const currentValue = document.getElementById('result').innerHTML;
@@ -34,43 +17,45 @@ function back() {
 }
 
 function calculate() {
+
     const operatorIndex = displayValue.findIndex(value => operators.includes(value));
-    const hasOperator = displayValue.at(operatorIndex);
-    const algarismosRomano = displayValue.slice(0, operatorIndex).join('');
-    const algarismosRomano2 = displayValue.slice(operatorIndex + 1, displayValue.length).join('');
-    const algarismosArabicos = convertToArabicNumber(algarismosRomano);
-    const algarismosArabicos2 = convertToArabicNumber(algarismosRomano2);
-    const resultadoArabico = eval(algarismosArabicos + hasOperator + algarismosArabicos2);
-    const resultadoRomano = convertToRoman(resultadoArabico);
-    const innerArabico = `${algarismosArabicos} ${hasOperator} ${algarismosArabicos2} = ${resultadoArabico}`;
-    const innerRomano = `${algarismosRomano} ${hasOperator} ${algarismosRomano2} = ${resultadoRomano}`;
-    const decimalList = document.getElementById('listaDeCalculosDecimais');
-    const romanoList = document.getElementById('listaDeCalculosRomanos');
-    romanoList.innerHTML += `<li>${innerRomano}</li>`;
-    decimalList.innerHTML += `<li>${innerArabico}</li>`;
+    const operator = displayValue.at(operatorIndex);
+
+    const romanNumeral = displayValue.slice(0, operatorIndex).join('');
+    const romanNumeral2 = displayValue.slice(operatorIndex + 1, displayValue.length).join('');
+
+    const arabicNumbers = convertToArabicNumber(romanNumeral);
+    const arabicNumbers2 = convertToArabicNumber(romanNumeral2);
+
+    const arabicResult = eval(arabicNumbers + operator + arabicNumbers2);
+    const romanResult = convertToRoman(arabicResult);
+
+    const arabicDisplay = `${arabicNumbers} ${operator} ${arabicNumbers2} = ${arabicResult}`;
+    const romanDisplay = `${romanNumeral} ${operator} ${romanNumeral2} = ${romanResult}`;
+
+    const showDecimalResultList = document.getElementById('listaDeCalculosDecimais');
+    const showRomanResultList = document.getElementById('listaDeCalculosRomanos');
+    
+    showRomanResultList.innerHTML += `<li>${romanDisplay}</li>`;
+    showDecimalResultList.innerHTML += `<li>${arabicDisplay}</li>`;
     //Esvaziando o array
     clean();
 }
 
 function convertToRoman(arabicNumber){
-    let letraromana = '';
-    let numero = arabicNumber;
-    for(let i=0; i < numeroseNumerais.length; i++){
-        if(numeroseNumerais[i].numero <= numero){    // 18 - 10 = 8
-            numero = numero - numeroseNumerais[i].numero;
-                            //10        -   10
-            letraromana = letraromana + numeroseNumerais[i].romano;
-                            //''      + 'X'
-            i--
+    let romanNumeral = '';
+    let number = arabicNumber;
+    numbersAndNumerals.forEach( (element) => {
+        while(number >= element.number){
+            romanNumeral += element.roman;
+            number -= element.number;
         }
-    }
-
-    return letraromana;
-
+    });
+    return romanNumeral;
 }
 
-function convertToArabicNumber(numeroRomano){
-    let romano = numeroRomano;
+function convertToArabicNumber(romanNumeral){
+    let roman = romanNumeral;
     const map = {
         I:1,
         V:5,
@@ -81,17 +66,32 @@ function convertToArabicNumber(numeroRomano){
         M:1000
     };
 
-    let resultado = 0;
+    let result = 0;
 
-    if (romano.length){
-        resultado+=map[romano[romano.length-1]];
-    }
-    for (let i= romano.length - 1; i > 0; i--){
-        if(map[romano[i-1]] < map[romano[i]]) {
-            resultado-=map[romano[i-1]];
-        }else{
-            resultado+=map[romano[i-1]];
+    roman.split('').forEach( (element, index) => {
+        if(map[roman[index-1]] < map[element]){
+            result -= map[element];
         }
-    }
-    return resultado;
+        result += map[element];
+    });
+
+    return result;
 }
+
+const displayValue = [];
+const operators = ['+', '-', '*', '/'];
+const numbersAndNumerals = [
+    {number: 1000, roman: 'M'}, 
+    {number: 900, roman: 'CM'}, 
+    {number: 500, roman: 'D'},  
+    {number: 400, roman: 'CD'}, 
+    {number: 100, roman: 'C'},  
+    {number: 90, roman: 'XC'},  
+    {number: 50, roman: 'L'},   
+    {number: 40, roman: 'XL'},  
+    {number: 10, roman: 'X'},   
+    {number: 9, roman: 'IX'},   
+    {number: 5, roman: 'V'},    
+    {number: 4, roman: 'IV'},   
+    {number: 1, roman: 'I'}     
+];
