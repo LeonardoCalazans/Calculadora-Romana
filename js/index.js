@@ -1,12 +1,11 @@
+const operators = ['+', '-', '*', '/'];
+const displayValue = [];
+
 function insert(algarism) {
     const currentValue = document.getElementById('result').innerHTML;
-    const displayValue = currentValue + algarism;
-    const operation = setOperation(algarism);
-    const newValue = verifyCurrentDisplay(displayValue);
-    console.log('display>>', displayValue);
-    console.log('operation>>', operation);
-    console.log('newValue>>', newValue);
-    document.getElementById('result').innerHTML = newValue + operation;
+    displayValue.push(algarism);
+    console.log(displayValue)
+    document.getElementById('result').innerHTML = currentValue + algarism;
 }
 
 function clean() {
@@ -34,24 +33,24 @@ function calculate() {
 }
 
 function verifyCurrentDisplay(displayValue) {
-    const operators = ['+', '-', '*', '/'];
+
     const index = -1;
     console.log('displayValue>>', displayValue);
     const lastChar = displayValue ? displayValue.at(index) : '';
     console.log('lastChar>>', lastChar);
-    if(operators.includes(lastChar)) {
+    if (operators.includes(lastChar)) {
 
-        switch (displayValue) { 
-            case displayValue.includes('11')    : return displayValue = 2;
-            case '111'   : return displayValue = 3;
-            case '15'    : return displayValue = 4;
-            case '51'    : return displayValue = 6;
-            case '511'   : return displayValue = 7;
-            case '5111'  : return displayValue = 8;
-            case '110'   : return displayValue = 9;
-            case '101'   : return displayValue = 11;
-            case '1011'  : return displayValue = 12;
-            case '10111' : return displayValue = 13;
+        switch (displayValue) {
+            case displayValue.includes('11'): return displayValue = 2;
+            case '111': return displayValue = 3;
+            case '15': return displayValue = 4;
+            case '51': return displayValue = 6;
+            case '511': return displayValue = 7;
+            case '5111': return displayValue = 8;
+            case '110': return displayValue = 9;
+            case '101': return displayValue = 11;
+            case '1011': return displayValue = 12;
+            case '10111': return displayValue = 13;
         }
     }
     return displayValue;
@@ -61,7 +60,7 @@ function setOperation(operation) {
     const operators = ['+', '-', '*', '/'];
     const index = -1;
     const lastChar = operation.at(index);
-    if(operators.includes(lastChar)) return lastChar;
+    if (operators.includes(lastChar)) return lastChar;
     return '';
 }
 
