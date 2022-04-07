@@ -35,18 +35,18 @@ function calculate() {
 
     const showDecimalResultList = document.getElementById('listaDeCalculosDecimais');
     const showRomanResultList = document.getElementById('listaDeCalculosRomanos');
-    
+
     showRomanResultList.innerHTML += `<li>${romanDisplay}</li>`;
     showDecimalResultList.innerHTML += `<li>${arabicDisplay}</li>`;
     //Esvaziando o array
     clean();
 }
 
-function convertToRoman(arabicNumber){
+function convertToRoman(arabicNumber) {
     let romanNumeral = '';
     let number = arabicNumber;
-    numbersAndNumerals.forEach( (element) => {
-        while(number >= element.number){
+    numbersAndNumerals.forEach((element) => {
+        while (number >= element.number) {
             romanNumeral += element.roman;
             number -= element.number;
         }
@@ -54,26 +54,27 @@ function convertToRoman(arabicNumber){
     return romanNumeral;
 }
 
-function convertToArabicNumber(romanNumeral){
-    let roman = romanNumeral;
-    const map = {
-        I:1,
-        V:5,
-        X:10,
-        L:50,
-        C:100,
-        D:500,
-        M:1000
+function convertToArabicNumber(roman) {
+    let result = 0;
+    let romanTable = {
+        I: 1,
+        V: 5,
+        X: 10,
+        L: 50,
+        C: 100,
+        D: 500,
+        M: 1000
     };
 
-    let result = 0;
+    result += romanTable[roman[roman.length - 1]];
 
-    roman.split('').forEach( (element, index) => {
-        if(map[roman[index-1]] < map[element]){
-            result -= map[element];
+    for (let i = roman.length - 1; i > 0; i--) {
+        if (romanTable[roman[i - 1]] < romanTable[roman[i]]) {
+            result -= romanTable[roman[i - 1]];
+        } else {
+            result += romanTable[roman[i - 1]];
         }
-        result += map[element];
-    });
+    }
 
     return result;
 }
@@ -81,17 +82,17 @@ function convertToArabicNumber(romanNumeral){
 const displayValue = [];
 const operators = ['+', '-', '*', '/'];
 const numbersAndNumerals = [
-    {number: 1000, roman: 'M'}, 
-    {number: 900, roman: 'CM'}, 
-    {number: 500, roman: 'D'},  
-    {number: 400, roman: 'CD'}, 
-    {number: 100, roman: 'C'},  
-    {number: 90, roman: 'XC'},  
-    {number: 50, roman: 'L'},   
-    {number: 40, roman: 'XL'},  
-    {number: 10, roman: 'X'},   
-    {number: 9, roman: 'IX'},   
-    {number: 5, roman: 'V'},    
-    {number: 4, roman: 'IV'},   
-    {number: 1, roman: 'I'}     
+    { number: 1000, roman: 'M' },
+    { number: 900, roman: 'CM' },
+    { number: 500, roman: 'D' },
+    { number: 400, roman: 'CD' },
+    { number: 100, roman: 'C' },
+    { number: 90, roman: 'XC' },
+    { number: 50, roman: 'L' },
+    { number: 40, roman: 'XL' },
+    { number: 10, roman: 'X' },
+    { number: 9, roman: 'IX' },
+    { number: 5, roman: 'V' },
+    { number: 4, roman: 'IV' },
+    { number: 1, roman: 'I' }
 ];
