@@ -1,3 +1,5 @@
+import { convertToRoman } from "./convertToRoman.js";
+
 export function convertToDecimal(roman) {
     let result = 0;
     let romanTable = {
@@ -18,6 +20,11 @@ export function convertToDecimal(roman) {
         } else {
             result += romanTable[roman[i - 1]];
         }
+    }
+
+    const verifyInput = convertToRoman(result);
+    if (verifyInput !== roman){
+        return alert(`Inserção inválida, valor esperado: ${verifyInput} valor inserido: ${roman}`);
     }
 
     return result;

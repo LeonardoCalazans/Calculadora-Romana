@@ -45,6 +45,10 @@ function calculate() {
     const decimalNumber = convertToDecimal(romanNumeral);
     const decimalSecondNumber = convertToDecimal(romanSecondNumeral);
 
+    if (decimalNumber === undefined || decimalSecondNumber === undefined){
+        return;
+    }
+
     const decimalResult = eval(decimalNumber + operator + decimalSecondNumber);
     const romanResult = convertToRoman(decimalResult);
 
