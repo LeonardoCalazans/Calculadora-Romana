@@ -8,7 +8,7 @@
 
 ## Screenshots ou GIFs 📸
 
-<!-- dica: use o KAP ou tire um print com cmd + shift + 5 -->
+<!-- dica: use o KAP ou tire um print com cmd + shift + 5  para gerar videos utilize o kazam, gera bons videos em pouco tamanho -->
 
 | -----Figma----- | -Implementação- |
 | :-------------: | :-------------: |

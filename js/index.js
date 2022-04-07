@@ -1,66 +1,60 @@
-const operators = ['+', '-', '*', '/'];
+import { convertToDecimal } from './modules/convertToDecimal.js';
+import { convertToRoman } from './modules/convertToRoman.js';
+
 const displayValue = [];
+const operators = ['+', '-', '*', '/'];
+
+const cleanButtom = document.getElementById('clean');
+cleanButtom.addEventListener('click', clean);
+
+const backButtom = document.getElementById('back');
+backButtom.addEventListener('click', back);
+
+const calculateButtom = document.getElementById('calculate');
+calculateButtom.addEventListener('click', calculate);
+
+document.addEventListener('click', insert);
 
 function insert(algarism) {
-    const currentValue = document.getElementById('result').innerHTML;
-    displayValue.push(algarism);
-    console.log(displayValue)
-    document.getElementById('result').innerHTML = currentValue + algarism;
+    let value = algarism.path[0].innerText;
+    if (value === 'C' || value === 'D' || value === 'M' || value === 'L' || value === 'X' || value === 'V' || value === 'I' || value === '+' || value === '-' || value === '/' || value === '*') {
+        displayValue.push(value);
+        document.getElementById('result').innerHTML = displayValue.join('');
+    }
 }
 
 function clean() {
     document.getElementById('result').innerHTML = "";
+    displayValue.splice(0, displayValue.length);
 }
 
 function back() {
     var result = document.getElementById('result').innerHTML;
     document.getElementById('result').innerHTML = result.substring(0, result.length - 1);
+    displayValue.pop();
 }
 
 function calculate() {
-    var resultValue = document.getElementById('result').innerHTML;
-    console.log(resultValue)
-    if (resultValue) {
-        const result = document.getElementById('result').innerHTML = eval(resultValue);
-        const list = document.getElementById('listaDeCalculosDecimais')
-        list.innerHTML = `<li> ${resultValue} = ${result} <li>` + list.innerHTML;
-        console.log(list)
-        return result
-    }
-    else {
-        document.getElementById('result').innerHTML = "Nada..."
-    }
+
+    const operatorIndex = displayValue.findIndex(value => operators.includes(value));
+    const operator = displayValue.at(operatorIndex);
+
+    const romanNumeral = displayValue.slice(0, operatorIndex).join('');
+    const romanSecondNumeral = displayValue.slice(operatorIndex + 1, displayValue.length).join('');
+
+    const decimalNumber = convertToDecimal(romanNumeral);
+    const decimalSecondNumber = convertToDecimal(romanSecondNumeral);
+
+    const decimalResult = eval(decimalNumber + operator + decimalSecondNumber);
+    const romanResult = convertToRoman(decimalResult);
+
+    const decimalDisplay = `${decimalNumber} ${operator} ${decimalSecondNumber} = ${decimalResult}`;
+    const romanDisplay = `${romanNumeral} ${operator} ${romanSecondNumeral} = ${romanResult}`;
+
+    const showDecimalResultList = document.getElementById('listaDeCalculosDecimais');
+    const showRomanResultList = document.getElementById('listaDeCalculosRomanos');
+
+    showRomanResultList.innerHTML = `<li>${romanDisplay}</li>` + showRomanResultList.innerHTML;
+    showDecimalResultList.innerHTML = `<li>${decimalDisplay}</li>` + showDecimalResultList.innerHTML;
+    clean();
 }
-
-function verifyCurrentDisplay(displayValue) {
-
-    const index = -1;
-    console.log('displayValue>>', displayValue);
-    const lastChar = displayValue ? displayValue.at(index) : '';
-    console.log('lastChar>>', lastChar);
-    if (operators.includes(lastChar)) {
-
-        switch (displayValue) {
-            case displayValue.includes('11'): return displayValue = 2;
-            case '111': return displayValue = 3;
-            case '15': return displayValue = 4;
-            case '51': return displayValue = 6;
-            case '511': return displayValue = 7;
-            case '5111': return displayValue = 8;
-            case '110': return displayValue = 9;
-            case '101': return displayValue = 11;
-            case '1011': return displayValue = 12;
-            case '10111': return displayValue = 13;
-        }
-    }
-    return displayValue;
-}
-
-function setOperation(operation) {
-    const operators = ['+', '-', '*', '/'];
-    const index = -1;
-    const lastChar = operation.at(index);
-    if (operators.includes(lastChar)) return lastChar;
-    return '';
-}
-
