@@ -10,52 +10,53 @@
 </head>
 
 <body class="landing-page">
-    <div class="fundo">
-        <div class="calc">
-            <div class="x">
+    <div>
+        <div>
+            <div class="flex">
                 <div>
                     <h1>Aριθμομηχανή</h1>
                     <p>(Calculadora)</p>
                     <p id="result"></p>
                     <table>
                         <tr>
-                            <td colspan="2"><button class="button clean" onclick="clean()">AC</button></td>
-                            <td><button class="button" onclick="back()"> B </button></td>
-                            <td><button class="button" onclick="insert('/')">/</button></td>
+                            <td colspan="2"><button class="button clean" id="clean">AC</button></td>
+                            <td><button class="button" id="back"> ← </button></td>
+                            <td><button class="button" id="divider">/</button></td>
                         </tr>
                         <tr>
-                            <td><button class="button" onclick="insert('C')">C</button></td>
-                            <td><button class="button" onclick="insert('D')">D</button></td>
-                            <td><button class="button" onclick="insert('M')">M</button></td>
-                            <td><button class="button" onclick="insert('*')">*</button></td>
+                            <td><button class="button">C</button></td>
+                            <td><button class="button">D</button></td>
+                            <td><button class="button">M</button></td>
+                            <td><button class="button" id="multiplier">*</button></td>
                         </tr>
                         <tr>
-                            <td><button class="button" onclick="insert('L')">L</button></td>
-                            <td><button class="button" onclick="insert('X')">X</button></td>
-                            <td><button class="button" onclick="insert('V')">V</button></td>
-                            <td><button class="button" onclick="insert('-')">-</button></td>
+                            <td><button class="button">L</button></td>
+                            <td><button class="button">X</button></td>
+                            <td><button class="button">V</button></td>
+                            <td><button class="button" id="diminution">-</button></td>
                         </tr>
                         <tr>
-                            <td colspan="3"><button class="button unos" onclick="insert('I')">I</button></td>
-                            <td><button class="button" onclick="insert('+')">+</button></td>
+                            <td colspan="3"><button class="button unos">I</button></td>
+                            <td><button class="button" id="addition" value="+">+</button></td>
                         </tr>
                         <tr>
-                            <td colspan="3"><button class="button equal" onclick="calculate()">=</button></td>
+                            <td colspan="3"><button class="button equal" id="calculate">=</button>
+                            </td>
                         </tr>
                     </table>
                 </div>
                 <div class="bar"></div>
-                <div>
-                    <p>Resultados em romano</p>
-                    <ul class="listaDeCalculos mt-20" id="listaDeCalculosRomanos">
+                <div class="wrapper-result-list">
+                    <h4>Resultados em romano</h4>
+                    <ul class="result-list mt-20" id="listaDeCalculosRomanos">
                         <li>
                         </li>
                     </ul>
                 </div>
                 <div class="bar"></div>
-                <div>
-                    <p>Resultados em decimais</p>
-                    <ul class="listaDeCalculos mt-20" id="listaDeCalculosDecimais">
+                <div class="wrapper-result-list">
+                    <h4>Resultados em decimais</h4>
+                    <ul class="result-list mt-20" id="listaDeCalculosDecimais">
                         <li>
                         </li>
                     </ul>
@@ -63,15 +64,21 @@
             </div>
         </div>
     </div>
-    <footer class="text-white">
+    <footer>
         <h2>Desenvolvido por:</h2>
         <ul class="mt-20">
-            <li>Leonardo Pinto Silva Calazan - Matricula: 2020101772</li>
-            <li>Wendel Felipe Nascimento Nogueira - Matrícula: 2020101189</li>
-            <li>Lucas Gomes Ribeiro - Matrícula: 2020101323</li>
+            <li><a href="https://github.com/LeonardoCalazans" target="_blank"
+                    alt="github Leonardo Pinto Silva Calazans">Leonardo Pinto Silva Calazans - Matricula:
+                    2020101772 </a></li>
+            <li><a href="https://github.com/WendelNogueira23" target="_blank"
+                    alt="github Wendel Felipe Nascimento Nogueira">Wendel Felipe Nascimento Nogueira - Matrícula:
+                    2020101189</a></li>
+            <li><a href="https://github.com/LucsGomes" target="_blank" alt="github Lucas Gomes Ribeiro">Lucas Gomes
+                    Ribeiro - Matrícula: 2020101323</a>
+            </li>
         </ul>
     </footer>
-    <script src="./js/index.js"></script>
+    <script src="./js/index.js" type="module"></script>
 </body>
 
 </html>
