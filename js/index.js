@@ -1,8 +1,26 @@
+import { convertToDecimal } from './modules/convertToDecimal.js';
+import { convertToRoman } from './modules/convertToRoman.js';
+
+const displayValue = [];
+const operators = ['+', '-', '*', '/'];
+
+const cleanButtom = document.getElementById('clean');
+cleanButtom.addEventListener('click', clean);
+
+const backButtom = document.getElementById('back');
+backButtom.addEventListener('click', back);
+
+const calculateButtom = document.getElementById('calculate');
+calculateButtom.addEventListener('click', calculate);
+
+document.addEventListener('click', insert);
 
 function insert(algarism) {
-    const currentValue = document.getElementById('result').innerHTML;
-    document.getElementById('result').innerHTML = currentValue + algarism;
-    displayValue.push(algarism);
+    let value = algarism.path[0].innerText;
+    if (value === 'C' || value === 'D' || value === 'M' || value === 'L' || value === 'X' || value === 'V' || value === 'I' || value === '+' || value === '-' || value === '/' || value === '*') {
+        displayValue.push(value);
+        document.getElementById('result').innerHTML = displayValue.join('');
+    }
 }
 
 function clean() {
@@ -38,61 +56,5 @@ function calculate() {
 
     showRomanResultList.innerHTML += `<li>${romanDisplay}</li>`;
     showDecimalResultList.innerHTML += `<li>${decimalDisplay}</li>`;
-    //Esvaziando o array
     clean();
 }
-
-function convertToRoman(decimalNumber) {
-    let romanNumeral = '';
-    let number = decimalNumber;
-    numbersAndNumerals.forEach((element) => {
-        while (number >= element.number) {
-            romanNumeral += element.roman;
-            number -= element.number;
-        }
-    });
-    return romanNumeral;
-}
-
-function convertToDecimal(roman) {
-    let result = 0;
-    let romanTable = {
-        I: 1,
-        V: 5,
-        X: 10,
-        L: 50,
-        C: 100,
-        D: 500,
-        M: 1000
-    };
-
-    result += romanTable[roman[roman.length - 1]];
-
-    for (let i = roman.length - 1; i > 0; i--) {
-        if (romanTable[roman[i - 1]] < romanTable[roman[i]]) {
-            result -= romanTable[roman[i - 1]];
-        } else {
-            result += romanTable[roman[i - 1]];
-        }
-    }
-
-    return result;
-}
-
-const displayValue = [];
-const operators = ['+', '-', '*', '/'];
-const numbersAndNumerals = [
-    { number: 1000, roman: 'M' },
-    { number: 900, roman: 'CM' },
-    { number: 500, roman: 'D' },
-    { number: 400, roman: 'CD' },
-    { number: 100, roman: 'C' },
-    { number: 90, roman: 'XC' },
-    { number: 50, roman: 'L' },
-    { number: 40, roman: 'XL' },
-    { number: 10, roman: 'X' },
-    { number: 9, roman: 'IX' },
-    { number: 5, roman: 'V' },
-    { number: 4, roman: 'IV' },
-    { number: 1, roman: 'I' }
-];
