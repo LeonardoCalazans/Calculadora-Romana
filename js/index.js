@@ -22,29 +22,29 @@ function calculate() {
     const operator = displayValue.at(operatorIndex);
 
     const romanNumeral = displayValue.slice(0, operatorIndex).join('');
-    const romanNumeral2 = displayValue.slice(operatorIndex + 1, displayValue.length).join('');
+    const romanSecondNumeral = displayValue.slice(operatorIndex + 1, displayValue.length).join('');
 
-    const arabicNumber = convertToArabicNumber(romanNumeral);
-    const arabicNumber2 = convertToArabicNumber(romanNumeral2);
+    const decimalNumber = convertToDecimal(romanNumeral);
+    const decimalSecondNumber = convertToDecimal(romanSecondNumeral);
 
-    const arabicResult = eval(arabicNumber + operator + arabicNumber2);
-    const romanResult = convertToRoman(arabicResult);
+    const decimalResult = eval(decimalNumber + operator + decimalSecondNumber);
+    const romanResult = convertToRoman(decimalResult);
 
-    const arabicDisplay = `${arabicNumber} ${operator} ${arabicNumber2} = ${arabicResult}`;
-    const romanDisplay = `${romanNumeral} ${operator} ${romanNumeral2} = ${romanResult}`;
+    const decimalDisplay = `${decimalNumber} ${operator} ${decimalSecondNumber} = ${decimalResult}`;
+    const romanDisplay = `${romanNumeral} ${operator} ${romanSecondNumeral} = ${romanResult}`;
 
     const showDecimalResultList = document.getElementById('listaDeCalculosDecimais');
     const showRomanResultList = document.getElementById('listaDeCalculosRomanos');
 
     showRomanResultList.innerHTML += `<li>${romanDisplay}</li>`;
-    showDecimalResultList.innerHTML += `<li>${arabicDisplay}</li>`;
+    showDecimalResultList.innerHTML += `<li>${decimalDisplay}</li>`;
     //Esvaziando o array
     clean();
 }
 
-function convertToRoman(arabicNumber) {
+function convertToRoman(decimalNumber) {
     let romanNumeral = '';
-    let number = arabicNumber;
+    let number = decimalNumber;
     numbersAndNumerals.forEach((element) => {
         while (number >= element.number) {
             romanNumeral += element.roman;
@@ -54,7 +54,7 @@ function convertToRoman(arabicNumber) {
     return romanNumeral;
 }
 
-function convertToArabicNumber(roman) {
+function convertToDecimal(roman) {
     let result = 0;
     let romanTable = {
         I: 1,
