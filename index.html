@@ -19,28 +19,29 @@
                     <p id="result"></p>
                     <table>
                         <tr>
-                            <td colspan="2"><button class="button clean" onclick="clean()">AC</button></td>
-                            <td><button class="button" onclick="back()"> B </button></td>
-                            <td><button class="button" onclick="insert('/')">/</button></td>
+                            <td colspan="2"><button class="button clean" id="clean">AC</button></td>
+                            <td><button class="button" id="back"> ← </button></td>
+                            <td><button class="button" id="divider">/</button></td>
                         </tr>
                         <tr>
-                            <td><button class="button" onclick="insert('C')">C</button></td>
-                            <td><button class="button" onclick="insert('D')">D</button></td>
-                            <td><button class="button" onclick="insert('M')">M</button></td>
-                            <td><button class="button" onclick="insert('*')">*</button></td>
+                            <td><button class="button">C</button></td>
+                            <td><button class="button">D</button></td>
+                            <td><button class="button">M</button></td>
+                            <td><button class="button" id="multiplier">*</button></td>
                         </tr>
                         <tr>
-                            <td><button class="button" onclick="insert('L')">L</button></td>
-                            <td><button class="button" onclick="insert('X')">X</button></td>
-                            <td><button class="button" onclick="insert('V')">V</button></td>
-                            <td><button class="button" onclick="insert('-')">-</button></td>
+                            <td><button class="button">L</button></td>
+                            <td><button class="button">X</button></td>
+                            <td><button class="button">V</button></td>
+                            <td><button class="button" id="diminution">-</button></td>
                         </tr>
                         <tr>
-                            <td colspan="3"><button class="button unos" onclick="insert('I')">I</button></td>
-                            <td><button class="button" onclick="insert('+')">+</button></td>
+                            <td colspan="3"><button class="button unos">I</button></td>
+                            <td><button class="button" id="addition" value="+">+</button></td>
                         </tr>
                         <tr>
-                            <td colspan="3"><button class="button equal" onclick="calculate()">=</button></td>
+                            <td colspan="3"><button class="button equal" id="calculate">=</button>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -71,7 +72,7 @@
             <li>Lucas Gomes Ribeiro - Matrícula: 2020101323</li>
         </ul>
     </footer>
-    <script src="./js/index.js"></script>
+    <script src="./js/index.js" type="module"></script>
 </body>
 
 </html>
