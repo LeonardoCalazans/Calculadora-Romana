@@ -1,12 +1,33 @@
-.listaDeCalculos {
-  width: 15rem;
-  color: #000;
+.wrapper-result-list{
+  height: 60vh;
+  padding: 0 1rem;
+  overflow-y: scroll;
+  overflow-y: auto;
+  
+}
+.wrapper-result-list::-webkit-scrollbar {
+  position: absolute;
+  border-radius: 20px;       
+  width: 8px;             
+}
+
+.wrapper-result-list::-webkit-scrollbar-track {
+  border-radius: 20px;       
+  background: rgb(4, 55, 68);    
+}
+
+.wrapper-result-list::-webkit-scrollbar-thumb {
+  background-color: rgb(20, 180, 220);   
+  border-radius: 20px;       
+}
+.result-list{
+  color: #fff;
   font-size: 1.1rem;
   font-weight: 700;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-.listaDeCalculos li {
-  padding-bottom: 0.15rem;
+.result-list li {
+  padding-bottom: .5rem;
 }

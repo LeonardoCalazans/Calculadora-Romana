@@ -54,7 +54,7 @@ function calculate() {
     const showDecimalResultList = document.getElementById('listaDeCalculosDecimais');
     const showRomanResultList = document.getElementById('listaDeCalculosRomanos');
 
-    showRomanResultList.innerHTML += `<li>${romanDisplay}</li>`;
-    showDecimalResultList.innerHTML += `<li>${decimalDisplay}</li>`;
+    showRomanResultList.innerHTML = `<li>${romanDisplay}</li>` + showRomanResultList.innerHTML;
+    showDecimalResultList.innerHTML = `<li>${decimalDisplay}</li>` + showDecimalResultList.innerHTML;
     clean();
 }
