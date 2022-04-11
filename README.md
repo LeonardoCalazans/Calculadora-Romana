@@ -4,7 +4,7 @@
 
 Esse projeto tem como objetivo produzir uma calculador que recebera algarismos romanos em vem de algarismos no sistema decimal e devolverá ao usuario os calculos tantos em algarismos romanos quanto decimais.
 
-Foi um trabalho produzido com o prazo de uma semana, afim de ser entregue ao professor da Unicarioca Antonio Felipe Podgorski Bezerra para a matéria DESENVOLVIMENTO DE APLICAÇÕES WEB 2022/1
+Foi um trabalho produzido com o prazo de uma semana, afim de ser entregue ao professor da Unicarioca [Antonio Felipe Podgorski Bezerra](https://github.com/podgorski) para a matéria DESENVOLVIMENTO DE APLICAÇÕES WEB 2022/1
 
 ## Tecnologias Utilizadas
 
