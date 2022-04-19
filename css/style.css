@@ -2,11 +2,11 @@
 
 .landing-page {
   background-image: linear-gradient(45deg, rgb(4, 55, 68), rgb(20, 180, 220));
-  margin-top: 40px;
+  margin-top: 4rem;
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -28,5 +28,5 @@
   display: flex;
 }
 footer {
-  padding: 4rem;
+  padding: 6rem;
 }
