@@ -42,6 +42,10 @@ const numbersAndNumerals = [
 export function convertToRoman(decimalNumber) {
     let romanNumeral = '';
     let number = decimalNumber;
+    if (decimalNumber >= 4000000) {
+        alert('Resultado acima de 4.000.000 milhões, muito alem da tabela.')
+        return 'Tabela estourada';
+    }
     numbersAndNumerals.forEach((element) => {
         while (number >= element.number) {
             romanNumeral += element.roman;
